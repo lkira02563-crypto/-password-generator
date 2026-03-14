@@ -9,44 +9,22 @@ body {
   font-family: Arial, sans-serif;
   background: #f0f2f5;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 0;
-}
-  @media (max-width: 768px) {
-  .container {
-    flex-direction: column; 
-    gap: 20px;              /* smaller spacing on mobile */
-    padding: 20px;
-  }
-  .box, .description-box {
-    width: 100%;             /* take full width on small screens */
-    margin-left: 0;          /* remove side margin */
-  }
+  padding: 20px;
 }
 .container {
   display: flex;
   gap: 40px;
-  max-width: 900px;
-  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
 }
-.final{
- flex: 1;               
-  padding: 20px;
-  margin-left: 30px;      
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  font-size: 16px;
-  line-height: 1.5;
-}
-.box {
+.box, .description-box {
   background: #fff;
-  padding: 30px 25px;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   flex: 1;
+  min-width: 280px;
 }
 h1 {
   text-align: center;
@@ -89,6 +67,16 @@ button:hover {
   background: #f1f1f1;
   border-radius: 6px;
 }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .box, .description-box {
+    width: 100%;
+    margin-left: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -124,18 +112,14 @@ button:hover {
     <div class="output">
       <p>Estimated crack time:</p>
       <p id="crackTime"></p>
-
-      <p> <strong>useful fact :</strong>**“When you see a number like 3.2e+6 in programming or calculators, it’s just a shorthand for really big or small numbers. The e means ‘times 10 to the power of’. So 3.2e+6 literally means 3.2 × 10⁶, which is 3,200,000.
-
-If the exponent is negative, like 4e-3, it means 4 × 10⁻³, which is 0.004. It’s a convenient way to write numbers that are too big or too small to display normally.
-
-Important: this e is not Euler’s number — it’s just part of scientific notation.”** </p>
     </div>
   </div>
+
+  <div class="description-box">
+    <p>For this project, I avoided using rand() because it is not cryptographically secure and produces predictable sequences, which would make passwords easier to guess. Instead, I used a high-entropy random source (crypto.getRandomValues() in JavaScript) to ensure unpredictability. Password strength depends on both length and character variety—using uppercase, lowercase, numbers, and symbols increases the possible combinations and makes passwords much harder to crack. To illustrate this, the project includes a password crack time estimator, showing how high-entropy passwords resist brute-force attacks, combining security with a clear, user-friendly interface.</p>
+  </div>
 </div>
-<div class="final"><p>For this project, I avoided using rand() because it is not cryptographically secure and produces predictable sequences,
-   which would make passwords easier to guess. Instead, I used a high-entropy random source (crypto.getRandomValues() in JavaScript) to ensure unpredictability. Password strength depends on both length and character variety—using uppercase, lowercase, numbers, and symbols increases the possible combinations and makes passwords much harder to crack. To illustrate this, the project includes a password crack time estimator, showing how high-entropy passwords resist brute-force attacks,
-   combining security with a clear, user-friendly interface.</p></div>
+
 <script>
 const CHARACTER_SETS = {
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
