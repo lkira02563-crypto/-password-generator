@@ -14,6 +14,17 @@ body {
   align-items: flex-start;
   padding: 40px 0;
 }
+  @media (max-width: 768px) {
+  .container {
+    flex-direction: column; 
+    gap: 20px;              /* smaller spacing on mobile */
+    padding: 20px;
+  }
+  .box, .description-box {
+    width: 100%;             /* take full width on small screens */
+    margin-left: 0;          /* remove side margin */
+  }
+}
 .container {
   display: flex;
   gap: 40px;
